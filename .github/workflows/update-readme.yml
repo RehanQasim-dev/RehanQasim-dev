@@ -6,7 +6,11 @@ on:
   workflow_dispatch: # allows manual trigger
 
 permissions:
-  contents: write # allows pushing changes to the repo
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   update-readme:
@@ -22,12 +26,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Ensure you use the built-in GITHUB_TOKEN for authentication
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Generate Bio and Fetch Commits
         run: |
-          # 1. Create the Bio Section (This overwrites the file fresh every run)
+          # 1. Create the Bio Section
           echo "# Hi there, I'm Rehan Qasim 👋" > README.md
           echo "" >> README.md
           echo "**AI Compiler Engineer @ 10xEngineers | RISC-V & HPC Specialist**" >> README.md
@@ -43,30 +46,46 @@ jobs:
           echo "" >> README.md
 
           # 2. Fetch llama.cpp data
+          # We define a temporary directory
           mkdir -p tmp
           cd tmp
-          git clone --depth=100 https://github.com/ggerganov/llama.cpp.git
+          
+          # FIX 1: Fetch full history (no --depth limit) so we find older commits
+          git clone https://github.com/ggerganov/llama.cpp.git
           cd llama.cpp
           
-          # 3. Extract commits and format them
-          git log --all --grep="Co-authored-by: Rehan Qasim <rehan.qasim@10xengineers.ai" \
-            --pretty=format:"* [%h](https://github.com/ggerganov/llama.cpp/commit/%H) %s" \
-            > ../../COAUTHORED_COMMITS.md
+          # FIX 2: Search for Author AND Co-author separately, then combine
+          # Search 1: Commits where you are the AUTHOR
+          git log --all --author="Rehan Qasim" --pretty=format:"* [%h](https://github.com/ggerganov/llama.cpp/commit/%H) %s" > ../commits_authored.md
           
-          cd ../..
+          # Search 2: Commits where you are CO-AUTHOR (grep)
+          git log --all --grep="Co-authored-by: Rehan Qasim" --pretty=format:"* [%h](https://github.com/ggerganov/llama.cpp/commit/%H) %s" > ../commits_coauthored.md
+          
+          cd ..
+          
+          # Combine both lists, sort them (to remove duplicates), and save
+          cat commits_authored.md commits_coauthored.md | sort | uniq > ../ALL_COMMITS.md
+          
+          cd ..
           rm -rf tmp
 
-          # 4. Append commits to the README
+          # 3. Append commits to the README
           echo "## 🦙 My llama.cpp Contributions" >> README.md
-          echo "Recent co-authored commits optimizing for RISC-V:" >> README.md
+          echo "Recent commits optimizing for RISC-V:" >> README.md
           echo "" >> README.md
-          cat COAUTHORED_COMMITS.md >> README.md
           
-          # Clean up temporary file
-          rm COAUTHORED_COMMITS.md
+          # Check if file is not empty before appending
+          if [ -s ALL_COMMITS.md ]; then
+            cat ALL_COMMITS.md >> README.md
+          else
+            echo "No commits found matching 'Rehan Qasim'." >> README.md
+          fi
+          
+          rm ALL_COMMITS.md
 
       - name: Commit and push changes
         run: |
           git add README.md
           git commit -m "Update profile bio and llama.cpp contributions [skip ci]" || echo "No changes to commit"
+          git pull origin main --rebase
           git push origin main

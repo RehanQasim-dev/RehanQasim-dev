@@ -1,16 +1,18 @@
-## Hi there 👋
+# Hi, I'm Rehan 👋
 
-<!--
-**RehanQasim-dev/RehanQasim-dev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I contribute to open source projects, including [llama.cpp](https://github.com/ggerganov/llama.cpp).
 
-Here are some ideas to get you started:
+## My Contributions to llama.cpp
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+This list is automatically generated and updated by a GitHub Action.
+
+<!-- CONTRIBUTIONS-LIST START -->
+<!-- CONTRIBUTIONS-LIST END -->
+
+## About Me
+
+- 🔭 I’m currently working on machine learning, AI, and performance optimizations.
+- 🌱 I’m learning advanced C++, CUDA, and quantization techniques.
+- 💬 Ask me about ML, C++, performance optimization, or Git workflows.
+- 📫 How to reach me: [Your email or LinkedIn]
+- ⚡ Fun fact: I love exploring hardware-level optimizations and building benchmarks.

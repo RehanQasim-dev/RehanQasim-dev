@@ -16,29 +16,57 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # fetch full history to get all commits
+          fetch-depth: 0
 
       - name: Set up Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Ensure you use the built-in GITHUB_TOKEN for authentication
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Fetch co-authored commits from llama.cpp
+      - name: Generate Bio and Fetch Commits
         run: |
+          # 1. Create the Bio Section (This overwrites the file fresh every run)
+          echo "# Hi there, I'm Rehan Qasim 👋" > README.md
+          echo "" >> README.md
+          echo "**AI Compiler Engineer @ 10xEngineers | RISC-V & HPC Specialist**" >> README.md
+          echo "" >> README.md
+          echo "I specialize in bridging the gap between hardware and software to accelerate AI workloads. My focus is on the **RISC-V Software Ecosystem (RISE)**, creating high-performance kernels for **LLM inference**, and optimizing compilers like **LLVM** and **XNNPack**." >> README.md
+          echo "" >> README.md
+          echo "* 🔭 **Currently working on:** RISC-V Vector (RVV) support for **llama.cpp** and implementing GEMV/GEMM kernels." >> README.md
+          echo "* 🎓 **Education:** BS Electrical Engineering from UET Lahore (**Gold Medalist**, Rank 1/200)." >> README.md
+          echo "* 🛠️ **Tech Stack:** C/C++, Python, RISC-V Assembly, LLVM, SystemVerilog, FPGA (Vivado)." >> README.md
+          echo "* 📫 **Connect:** [LinkedIn](https://linkedin.com/in/rehan) | [Email](mailto:rehanbhatti0317@gmail.com)" >> README.md
+          echo "" >> README.md
+          echo "---" >> README.md
+          echo "" >> README.md
+
+          # 2. Fetch llama.cpp data
           mkdir -p tmp
           cd tmp
           git clone --depth=100 https://github.com/ggerganov/llama.cpp.git
           cd llama.cpp
+          
+          # 3. Extract commits and format them
           git log --all --grep="Co-authored-by: Rehan Qasim <rehan.qasim@10xengineers.ai" \
             --pretty=format:"* [%h](https://github.com/ggerganov/llama.cpp/commit/%H) %s" \
             > ../../COAUTHORED_COMMITS.md
+          
           cd ../..
-          echo "## My llama.cpp Co-authored Commits" > README.md
+          rm -rf tmp
+
+          # 4. Append commits to the README
+          echo "## 🦙 My llama.cpp Contributions" >> README.md
+          echo "Recent co-authored commits optimizing for RISC-V:" >> README.md
+          echo "" >> README.md
           cat COAUTHORED_COMMITS.md >> README.md
+          
+          # Clean up temporary file
+          rm COAUTHORED_COMMITS.md
 
       - name: Commit and push changes
         run: |
           git add README.md
-          git commit -m "Update llama.cpp co-authored commits [skip ci]" || echo "No changes to commit"
+          git commit -m "Update profile bio and llama.cpp contributions [skip ci]" || echo "No changes to commit"
           git push origin main

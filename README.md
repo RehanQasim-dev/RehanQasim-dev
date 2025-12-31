@@ -1,12 +1,12 @@
 # Hi there, I'm Rehan Qasim 👋
 
-**AI Compiler Engineer @ 10xEngineers | RISC-V & HPC Specialist**
+**AI Compiler Engineer @ 10xEngineers | LLM Inference Optimization|Computer Architecture**
 
-I specialize in bridging the gap between hardware and software to accelerate AI workloads. My focus is on the **RISC-V Software Ecosystem (RISE)**, creating high-performance kernels for **LLM inference**, and optimizing compilers like **LLVM** and **XNNPack**.
+I specialize in bridging the gap between hardware and software to accelerate AI workloads. My focus is on the **RISC-V Software Ecosystem (RISE)**, creating high-performance kernels for **LLM inference**.
 
-* 🔭 **Currently working on:** RISC-V Vector (RVV) support for **llama.cpp** and implementing GEMV/GEMM kernels.
+* 🔭 **Currently working on:** RISC-V Vector (RVV) support for **llama.cpp** and implementing LLM ops kernels for RISC-V vector extension.
 * 🎓 **Education:** BS Electrical Engineering from UET Lahore (**Gold Medalist**, Rank 1/200).
-* 🛠️ **Tech Stack:** C/C++, Python, RISC-V Assembly, LLVM, SystemVerilog, FPGA (Vivado).
+* 🛠️ **Tech Stack:** C/C++, Python, Machine Learning, RISC-V Assembly, SystemVerilog, FPGA (Vivado).
 * 📫 **Connect:** [LinkedIn](https://linkedin.com/in/rehan) | [Email](mailto:rehanbhatti0317@gmail.com)
 
 ---

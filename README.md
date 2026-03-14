@@ -18,3 +18,4 @@ Recent commits optimizing for RISC-V:
 * [b908baf18](https://github.com/ggerganov/llama.cpp/commit/b908baf1825b1a89afef87b09e22c32af2ca6548) ggml-cpu: add RVV vec dot kernels for quantization types (#18784)
 * [d34d5ca1e](https://github.com/ggerganov/llama.cpp/commit/d34d5ca1e9d06d18382feb0cfb6d9d105c86272d) llamafile: add rvv support for sgemm kernels (#18199)
 * [f716588e6](https://github.com/ggerganov/llama.cpp/commit/f716588e63224b2f33bb5d13b397fbcfabefa888) ggml-cpu: extend support for RVV floating-point kernels (#17318)
+* [fbaa95bc2](https://github.com/ggerganov/llama.cpp/commit/fbaa95bc29b9005586b76ab3d74f485eec05f282) ggml-cpu: add RVV vec dot kernels for quantization types (#18859)

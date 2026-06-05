@@ -15,6 +15,7 @@ I specialize in bridging the gap between hardware and software to accelerate AI 
 Recent commits optimizing for RISC-V:
 
 * [1e796eb41](https://github.com/ggerganov/llama.cpp/commit/1e796eb41fb51950ada45811a303e57a5f4ea974) ggml-cpu: add 128-bit RVV implementation for Quantization Vector Dot (#20633)
+* [3c7450cee](https://github.com/ggerganov/llama.cpp/commit/3c7450cee1335eef6f8091fa0498e875249e5595) ggml-cpu: extend RVV quantization vec dot to higher VLENs (#22754)
 * [563753651](https://github.com/ggerganov/llama.cpp/commit/5637536517ae4ed3eaa22b39c0d479e049097a9b) ggml : implemented simd_gemm kernel for riscv vector extension (#20627)
 * [af237f302](https://github.com/ggerganov/llama.cpp/commit/af237f3026cecd51b1c6f5e44a4c7cbd747bfde4) ggml-cpu: add RVV repack GEMM and GEMV for quantization types (#19121)
 * [b908baf18](https://github.com/ggerganov/llama.cpp/commit/b908baf1825b1a89afef87b09e22c32af2ca6548) ggml-cpu: add RVV vec dot kernels for quantization types (#18784)

@@ -1,17 +1,17 @@
-# Hi there, I'm Rehan Qasim 
+# Hi there, I'm Rehan Qasim 👋
 
 **AI Compiler Engineer @ 10xEngineers | LLM Inference Optimization|Computer Architecture**
 
 I specialize in bridging the gap between hardware and software to accelerate AI workloads. My focus is on the **RISC-V Software Ecosystem (RISE)**, creating high-performance kernels for **LLM inference**.
 
-* **Currently working on:** RISC-V Vector (RVV) support for **llama.cpp** and implementing LLM ops kernels for RISC-V vector extension.
-  **Education:** BS Electrical Engineering from UET Lahore.
-* **Tech Stack:** C/C++, Python, Machine Learning, RISC-V Assembly, SystemVerilog, FPGA (Vivado).
-* **Connect:** [LinkedIn](https://linkedin.com/in/rehan) | [Email](mailto:rehanbhatti0317@gmail.com)
+* 🔭 **Currently working on:** RISC-V Vector (RVV) support for **llama.cpp** and implementing LLM ops kernels for RISC-V vector extension.
+* 🎓 **Education:** BS Electrical Engineering from UET Lahore (**Gold Medalist**, Rank 1/200).
+* 🛠️ **Tech Stack:** C/C++, Python, Machine Learning, RISC-V Assembly, SystemVerilog, FPGA (Vivado).
+* 📫 **Connect:** [LinkedIn](https://linkedin.com/in/rehan) | [Email](mailto:rehanbhatti0317@gmail.com)
 
 ---
 
-## My llama.cpp Contributions
+## 🦙 My llama.cpp Contributions
 Recent commits optimizing for RISC-V:
 
 * [1e796eb41](https://github.com/ggerganov/llama.cpp/commit/1e796eb41fb51950ada45811a303e57a5f4ea974) ggml-cpu: add 128-bit RVV implementation for Quantization Vector Dot (#20633)

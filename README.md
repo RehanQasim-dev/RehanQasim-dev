@@ -14,6 +14,7 @@ I specialize in bridging the gap between hardware and software to accelerate AI 
 ## 🦙 My llama.cpp Contributions
 Recent commits optimizing for RISC-V:
 
+* [082b326fc](https://github.com/ggerganov/llama.cpp/commit/082b326fc76f6e9bbb835b3920a3022bfdb6691c) ggml-et: Initial ET backend  (#24179)
 * [1e796eb41](https://github.com/ggerganov/llama.cpp/commit/1e796eb41fb51950ada45811a303e57a5f4ea974) ggml-cpu: add 128-bit RVV implementation for Quantization Vector Dot (#20633)
 * [3c7450cee](https://github.com/ggerganov/llama.cpp/commit/3c7450cee1335eef6f8091fa0498e875249e5595) ggml-cpu: extend RVV quantization vec dot to higher VLENs (#22754)
 * [563753651](https://github.com/ggerganov/llama.cpp/commit/5637536517ae4ed3eaa22b39c0d479e049097a9b) ggml : implemented simd_gemm kernel for riscv vector extension (#20627)
